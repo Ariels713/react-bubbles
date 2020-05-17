@@ -15,12 +15,7 @@ function App() {
       <Header />
       <div className="App">
         <Route exact path="/" component={WelcomePage} />
-        <PrivateRoute exact path="/bubblePage" component={BubblePage}/>
-        {/* <Route exact path="/bubblepage" component={BubblePage} /> */}
-        {/* 
-          Build a PrivateRoute component that will 
-          display BubblePage when you're authenticated 
-        */}
+        <PrivateRoute exact path="/bubblepage" component={BubblePage}/>
         <Route exact path="/login" component={Login}/>
       </div>
     </Router>

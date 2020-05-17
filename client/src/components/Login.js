@@ -1,21 +1,5 @@
-// import React from "react";
-
-// const Login = () => {
-//   // make a post request to retrieve a token from the api
-//   // when you have handled the token, navigate to the BubblePage route
-//   return (
-//     <>
-//       <h1>Welcome to the Bubble App!</h1>
-//       <p>Build a login page here</p>
-//     </>
-//   );
-// };
-
-// export default Login;
-
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/AxiosWithAuth"
-import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -60,7 +44,7 @@ const LogInForm = (props) => {
   const [errorMessage] = useState(
     "Username or Password incorrect. Please see Readme"
   );
-  const history = useHistory();
+
   const classes = useStyles();
 
   const handleSubmit = (event) => {
@@ -68,10 +52,9 @@ const LogInForm = (props) => {
     setLoading(true);
     axiosWithAuth()
     .post("/api/login", userData)
-      // .then(res => console.log("%c res.data", "color:yellow",  res.data.payload))
       .then((res) => {
         localStorage.setItem("token",res.data.payload);
-        history.push('/bubblePage')
+        props.history.push("/bubblepage")
       })
       .then(setLoading(false))
       .then(() => {
